@@ -18,8 +18,7 @@ install:
 - # skip
 
 script:
-- env GO111MODULE=on
-- go mod download
+- GO111MODULE=on go mod download
 - go vet $(go list ./... | grep -v /vendor/)
 - env GO111MODULE=on go test -v -race ./...
 # Only build binaries from the latest Go release.
