@@ -9,7 +9,6 @@ matrix:
   - go: 1.9.x
   - go: 1.10.x
   - go: 1.11.x
-  - go: tip
   allow_failures:
   - go: tip
 
@@ -26,7 +25,7 @@ script:
 - go vet $(go list ./... | grep -v /vendor/)
 - go test -v -race ./...
 # Only build binaries from the latest Go release.
-- if [ "${LATEST}" = "true" ]; then gox -os="linux darwin windows" -arch="amd64" -output="travis.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+- if [ "${LATEST}" = "true" ]; then gox -output="travis_{{.OS}}_{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
 deploy:
   provider: releases
