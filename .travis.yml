@@ -18,9 +18,9 @@ install:
 - # skip
 
 script:
-- GO111MODULE=ongo mod download
-- GO111MODULE=ongo vet $(go list ./... | grep -v /vendor/)
-- GO111MODULE=ongo test -v -race ./...
+- GO111MODULE=on go mod download
+- GO111MODULE=on go vet $(go list ./... | grep -v /vendor/)
+- GO111MODULE=on go test -v -race ./...
 # Only build binaries from the latest Go release.
 - if [ "${LATEST}" = "true" ]; then GO111MODULE=on gox -os="windows linux" -output="travis_{{.OS}}_{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
