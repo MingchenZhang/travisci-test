@@ -19,10 +19,9 @@ install:
 
 script:
 - GO111MODULE=on go mod download
-- GO111MODULE=on go vet $(go list ./... | grep -v /vendor/)
 - GO111MODULE=on go test -v -race ./...
 # Only build binaries from the latest Go release.
-- if [ "${LATEST}" = "true" ]; then GO111MODULE=on gox -os="windows linux" -output="travis_{{.OS}}_{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
+- if [ "${LATEST}" = "true" ]; then GO111MODULE=on gox -os="windows linux" -arch="amd64 386 arm arm64" -output="travis_{{.OS}}_{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
 deploy:
   provider: releases
