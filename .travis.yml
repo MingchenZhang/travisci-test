@@ -6,8 +6,6 @@ matrix:
   # e.g. "1.x" is 1.11 until 1.11.1 is available.
   - go: 1.x
     env: LATEST=true
-  - go: 1.9.x
-  - go: 1.10.x
   - go: 1.11.x
   allow_failures:
   - go: tip
@@ -20,10 +18,10 @@ install:
 - # skip
 
 script:
+- env GO111MODULE=on
 - go mod download
-- diff -u <(echo -n) <(gofmt -d .)
 - go vet $(go list ./... | grep -v /vendor/)
-- go test -v -race ./...
+- env GO111MODULE=on go test -v -race ./...
 # Only build binaries from the latest Go release.
 - if [ "${LATEST}" = "true" ]; then gox -os="windows linux" -output="travis_{{.OS}}_{{.Arch}}" -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
