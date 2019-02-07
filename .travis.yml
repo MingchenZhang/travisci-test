@@ -30,6 +30,7 @@ deploy:
     # Your *encrypted* GitHub key, as the output of the Travis CI CLI tool.
     secure: SHrCFHFfCgHBCiOPC9xvMnsaS5pPb5CkXM0IbU6axYlN1HwLre7goJ36hIBAOIEH5jCISH93pRgX0TvnECBrPPLOvCYsk+uU47k/Dsw2WgTXg5GBc4PIj805uCayN8XceLE+jj4fhQh7tdmn+I25Mb6D9C5CjIanEWLsTaIkDdKuphr2k/sCkVeuKk4d4uN3x/xb3b9dbWSZ9mVCom6cXOhV9/ToyeWhSdL8fWacISfZy6uTTvKxlkzzyhaFV6RfQqtqN/EYAELbtQhvZYFwlt0kwb5Up+vEqyxRG2mRGhAHrewlr4ZoKlP3id7D2mguE9Gzjw6zutHWCwb84zt1oe/Gv2ej36nE99alLvrXNPHvPaIMQw73sQLAkijRCxCiUSJOVUiM70v/VaXwlxXTISc/OhWTP30nIE6A0Ena3E4hDYatmSwX4EFuiOT19EJ226F2NXxhXcqmiTEgR24NzMbJXvfHPewTvEJwHlh+HLXol8geFcHZph34hXbbGfim0V71S2zuQojT/DbTkJP3U90ubzWvt2p0BPH8hIBJJlBtfeTdszdixrbRGwBb7+hu05w/Cmgp2h97T01kqETZ1Lfb14SUIsQtsLIy+qK4fuWMSuJT+I7UB3FeJdRregUtVk5bT+7l8TA70baAM/XP4KxBbdb/pZ9Vw+WZzbbxpQs=
   # The names of the binaries to output, based on the -output template passed to gox.
+  file_glob: true
   file: travis_*
   on:
     # What to repository to build
